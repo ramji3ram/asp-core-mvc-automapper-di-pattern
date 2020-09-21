@@ -9,35 +9,47 @@ using AutoMapper;
 
 namespace automapper_application.Controllers
 {
-    public class HomeController : Controller
-    {
-        private readonly IMapper _mapper;
-        public HomeController(IMapper mapper)
-        {
-            _mapper = mapper;
-        }
+	public class HomeController : Controller
+	{
+		private readonly IMapper _mapper;
+		public HomeController(IMapper mapper)
+		{
+			_mapper = mapper;
+		}
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+		public IActionResult Index()
+		{
+			return View();
+		}
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+		public IActionResult Privacy()
+		{
+			return View();
+		}
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-       
-        public IActionResult GetUser()
-        {
-            User user = new User();
-            var userDTO = _mapper.Map<UserDTO>(user);
-            return View("Detail",userDTO);
-        }
-    }
+		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+		public IActionResult Error()
+		{
+			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+		}
+
+		public IActionResult GetPerson()
+		{
+			Person person = new Person();
+			var persondto = _mapper.Map<PersonDTO>(person);
+			return View("View", persondto);
+		}
+
+		public IActionResult GetUser()
+		{
+			User user = new User();
+			var userDTO = _mapper.Map<UserDTO>(user);
+			return View("Detail", userDTO);
+
+
+
+
+
+		}
+	}
 }

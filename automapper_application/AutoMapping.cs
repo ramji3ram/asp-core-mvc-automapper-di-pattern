@@ -12,6 +12,7 @@ namespace automapper_application
         public AutoMapping()
         {
             CreateMap<User, UserDTO>(); // means you want to map from User to UserDTO
+            CreateMap<Person, PersonDTO>();
         }
     }
 }
